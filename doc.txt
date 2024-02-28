@@ -9,7 +9,6 @@
 
         created_at,
         updated_at,
-        deleted_at,
     }
 
     CheckProxy (
@@ -25,7 +24,6 @@
         finished_at,
         created_at,
         updated_at,
-        deleted_at,
     )
 
     // Создается для каждого протокола
@@ -65,9 +63,14 @@
 
     CheckProxyDownloadSpeed (
         id,
+        
         check_proxy_id,
         download_speed_kb_s,
         first_byte_received_time_ms, // Сколько времени прошло до получения первого байта от прокси
+        
+        created_at,
+        finished_at,
+        is_success,
     )
 
 Проблемы:
