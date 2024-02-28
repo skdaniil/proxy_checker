@@ -87,9 +87,9 @@ class CheckProxy extends Model
     /**
      * Создать проверку скорости загрузки данных для текущего прокси
      */
-    public function createDownloadSpeedCheck(): CheckProxyGeo
+    public function createDownloadSpeedCheck(): CheckProxyDownloadSpeed
     {
-        return $this->checkProxyGeo()->create();
+        return $this->checkProxyDownloadSpeed()->create();
     }
 
     /**
