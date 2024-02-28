@@ -1,0 +1,78 @@
+1. Модели
+
+    Check {
+        id,
+
+        uuid, // Более безопасно предоставлять пользователю
+        finished_at, // Когда вся информация была получена
+        is_success, // Возможно, по какой-то причине не удалось получить все необходимые данные?
+
+        created_at,
+        updated_at,
+        deleted_at,
+    }
+
+    CheckProxy (
+        id,
+
+        check_id,
+
+        ip,
+        port,
+
+        status, // работает/нет
+
+        finished_at,
+        created_at,
+        updated_at,
+        deleted_at,
+    )
+
+    // Создается для каждого протокола
+    CheckProxyProtocol (
+        id,
+        check_proxy_id,
+
+        protocol, // http/https/socks5
+
+        created_at,
+        finished_at,
+        is_success,
+    )
+
+    CheckProxyIpInfo (
+        id,
+        check_proxy_id,
+
+        external_ip, // Внешний IP прокси
+
+        created_at,
+        finished_at,
+        is_success,
+    )
+
+    CheckProxyGeoInfo (
+        id,
+        check_proxy_id,
+
+        country,
+        city,
+
+        created_at,
+        finished_at,
+        is_success,
+    )
+
+    CheckProxyDownloadSpeed (
+        id,
+        check_proxy_id,
+        download_speed_kb_s,
+        first_byte_received_time_ms, // Сколько времени прошло до получения первого байта от прокси
+    )
+
+Проблемы:
+1) Узнать какой протокол используется - http/https/socks5
+1.1) Если нет ответа ни на один из протоколов, то status = 'не работает'
+2) Получить внешний IP
+3) Получить страну по внешнему IP
+4) Получить скорость загрузки
